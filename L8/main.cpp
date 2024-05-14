@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <memory>
 
 struct Card {
 	std::string number;
@@ -20,7 +21,7 @@ Deck generateDeck() {
 
 	for (auto suit : suits) {
 		for (auto number : numbers) {
-			deck.push_back({number, suit});
+			deck.deck.push_back({number, suit});
 		}
 	}
 
@@ -28,17 +29,17 @@ Deck generateDeck() {
 }
 
 void shuffleDeck(Deck& deck) {
-	std::random_shuffle(deck.begin(), deck.end());
+	std::random_shuffle(deck.deck.begin(), deck.deck.end());
 }
 
 std::shared_ptr<Card> takeCard(Deck& deck) {
-	if (deck.empty()) {
+	if (deck.deck.empty()) {
 		return nullptr;
 	}
 
-	std::shared_ptr<Card> card = std::make_shared<Card>(deck.back());
+	std::shared_ptr<Card> card = std::make_shared<Card>(deck.deck.back());
 
-	deck.pop_back();
+	deck.deck.pop_back();
 
 	return card;
 }
