@@ -9,6 +9,8 @@ class Card {
 	std::string suit;
 
 public:
+	Card(std::string number, std::string suit) : number(number), suit(suit) {}
+
 	void printCard() {
 		std::cout << Card::number << " of " << Card::suit << std::endl;
 	}
