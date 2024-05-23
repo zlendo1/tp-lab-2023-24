@@ -45,7 +45,7 @@ public:
 		return *this;
 	}
 
-	std::shared_ptr<Card> takeCard() {
+	Card takeCard() {
 		if (cards.empty()) {
 			throw std::range_error("The deck is empty!")
 		}
@@ -64,7 +64,7 @@ int main() {
 
 	try {
 		for (Card card = deck.takeCard();; card = deck.takeCard()) {
-			card->printCard();
+			card.printCard();
 		}
 	} catch(...) {}
 
